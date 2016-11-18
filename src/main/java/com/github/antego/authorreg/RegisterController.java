@@ -34,10 +34,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 // todo error page
+// todo test
 @Controller
 public class RegisterController {
-	@Autowired
-	private NamedAccountService namedAccountService;
+    @Autowired
+    private EMAService emaService;
 
     @Autowired
     private NamedAccountSerializer serializerService;
@@ -50,7 +51,7 @@ public class RegisterController {
 
 	@PostMapping("/")
 	public HttpEntity<byte[]> registerSubmit(@ModelAttribute CopyrightHolder copyrightHolder) throws JsonProcessingException {
-        NamedAccount account = namedAccountService.getNamedAccount(copyrightHolder.getName());
+        NamedAccount account = emaService.getNamedAccount(copyrightHolder.getName());
         byte[] serializedNamedAccount = serializerService.serialize(account);
 
 		HttpHeaders header = new HttpHeaders();
