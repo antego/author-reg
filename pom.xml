@@ -8,6 +8,7 @@
     </parent>
     <groupId>com.github.antego.authorship</groupId>
     <artifactId>author-reg</artifactId>
+    <version>1.0</version>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -17,6 +18,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
     <build>
