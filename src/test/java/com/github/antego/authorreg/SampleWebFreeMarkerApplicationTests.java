@@ -36,12 +36,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Basic integration tests for FreeMarker application.
- *
- * @author Phillip Webb
- * @author Andy Wilkinson
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @DirtiesContext
@@ -55,21 +50,6 @@ public class SampleWebFreeMarkerApplicationTests {
 		ResponseEntity<String> entity = this.testRestTemplate.getForEntity("/",
 				String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-		assertThat(entity.getBody()).contains("Hello, Andy");
+		assertThat(entity.getBody()).contains("Message: ");
 	}
-
-	@Test
-	public void testFreeMarkerErrorTemplate() throws Exception {
-		HttpHeaders headers = new HttpHeaders();
-		headers.setAccept(Arrays.asList(MediaType.TEXT_HTML));
-		HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
-
-		ResponseEntity<String> responseEntity = this.testRestTemplate
-				.exchange("/does-not-exist", HttpMethod.GET, requestEntity, String.class);
-
-		assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-		assertThat(responseEntity.getBody())
-				.contains("Something went wrong: 404 Not Found");
-	}
-
 }

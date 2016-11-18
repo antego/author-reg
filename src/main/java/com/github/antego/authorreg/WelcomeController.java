@@ -19,21 +19,28 @@ package com.github.antego.authorreg;
 import java.util.Date;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
+// todo error page
 @Controller
 public class WelcomeController {
-
-	@Value("${application.message:Hello World}")
-	private String message = "Hello World";
+	@Autowired
+	private NamedAccountService service;
 
 	@GetMapping("/")
-	public String welcome(Map<String, Object> model) {
-		model.put("time", new Date());
-		model.put("message", this.message);
-		return "welcome";
+	public String registerForm(Model model) {
+		model.addAttribute("copyrightHolder", new CopyrightHolder());
+		return "register";
 	}
 
+	@PostMapping("/")
+	public String registerSubmit(@ModelAttribute CopyrightHolder copyrightHolder) {
+		return "result";
+	}
 }
