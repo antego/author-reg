@@ -19,19 +19,28 @@ package com.github.antego.authorreg;
 import java.util.Date;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 // todo error page
 @Controller
-public class WelcomeController {
+public class RegisterController {
 	@Autowired
-	private NamedAccountService service;
+	private NamedAccountService namedAccountService;
+
+    @Autowired
+    private NamedAccountSerializer serializerService;
 
 	@GetMapping("/")
 	public String registerForm(Model model) {
@@ -40,7 +49,16 @@ public class WelcomeController {
 	}
 
 	@PostMapping("/")
-	public String registerSubmit(@ModelAttribute CopyrightHolder copyrightHolder) {
-		return "result";
+	public HttpEntity<byte[]> registerSubmit(@ModelAttribute CopyrightHolder copyrightHolder) throws JsonProcessingException {
+        NamedAccount account = namedAccountService.getNamedAccount(copyrightHolder.getName());
+        byte[] serializedNamedAccount = serializerService.serialize(account);
+
+		HttpHeaders header = new HttpHeaders();
+		header.setContentType(new MediaType("application", "json"));
+		header.set("Content-Disposition",
+				"attachment; filename=keys.json");
+		header.setContentLength(serializedNamedAccount.length);
+
+		return new HttpEntity<>(serializedNamedAccount, header);
 	}
 }
