@@ -1,14 +1,24 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Handling Form Submission</title>
+    <title>Author registration service</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Author Registration</h1>
-<form action="#" th:action="@{/}" th:object="${copyrightHolder}" method="post">
-    <p>Author Name: <input type="text" th:field="*{name}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
+<div class="container">
+    <h1>Author Registration</h1>
+    <form action="#" th:action="@{/}" th:object="${copyrightHolder}" method="post">
+        <input class="form-control input-sm" placeholder="Author Name" type="text" th:field="*{name}" />
+        <input type="submit" value="Submit" class="btn btn-default"/>
+    </form>
+</div>
 </body>
 </html>
