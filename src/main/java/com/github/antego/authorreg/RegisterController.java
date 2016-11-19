@@ -22,7 +22,7 @@ public class RegisterController {
     @Autowired
     private NamedAccountSerializer serializerService;
 
-    @GetMapping("/register.html")
+    @GetMapping("/")
     public String registerForm(Model model) {
         model.addAttribute("copyrightHolder", new CopyrightHolder());
         return "register";
