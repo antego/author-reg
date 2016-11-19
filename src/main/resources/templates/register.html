@@ -11,13 +11,20 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/style/style.css}" />
+    <link rel="icon" type="image/x-icon"
+          th:href="@{/images/favicon.ico}" />
 </head>
 <body>
-<div class="container">
+<div class="container custom-container">
     <h1>Author Registration</h1>
     <form action="#" th:action="@{/}" th:object="${copyrightHolder}" method="post">
-        <input class="form-control input-sm" placeholder="Author Name" type="text" th:field="*{name}" />
-        <input type="submit" value="Submit" class="btn btn-default"/>
+        <div>
+            <input class="form-control input-xl" placeholder="Author Name" type="text" th:field="*{name}" />
+        </div>
+        <div>
+            <input type="submit" value="Submit" class="btn btn-default"/>
+        </div>
     </form>
 </div>
 </body>
