@@ -32,3 +32,8 @@ h1 {
 .btn-margin {
     margin-top: 10px;
 }
+
+.input-xl {
+    height: 2.5em;
+    font-size: 18px;
+}
