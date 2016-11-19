@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class NamedAccountSerializerTest {
     private NamedAccountSerializer serializer = new NamedAccountSerializer();
@@ -17,7 +17,7 @@ public class NamedAccountSerializerTest {
         namedAccount.setAddress("aprodghpoadfuh345uih");
         namedAccount.setPrivateKey("privatekey");
 
-        String expectedJson = "{\"name\":\"Name\",\"address\":\"aprodghpoadfuh345uih\",\"privateKey\":\"privatekey\"}";
+        String expectedJson = "{\n  \"name\" : \"Name\",\n  \"address\" : \"aprodghpoadfuh345uih\",\n  \"privateKey\" : \"privatekey\"\n}";
         assertEquals(expectedJson, new String(serializer.serialize(namedAccount), StandardCharsets.UTF_8));
     }
 }

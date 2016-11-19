@@ -16,20 +16,13 @@
 
 package com.github.antego.authorreg;
 
-import java.util.Arrays;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -46,10 +39,10 @@ public class SampleWebFreeMarkerApplicationTests {
 	private TestRestTemplate testRestTemplate;
 
 	@Test
-	public void testFreeMarkerTemplate() throws Exception {
+	public void testRegisterTemplate() throws Exception {
 		ResponseEntity<String> entity = this.testRestTemplate.getForEntity("/",
 				String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-		assertThat(entity.getBody()).contains("Message: ");
+		assertThat(entity.getBody()).contains("Author Name: ");
 	}
 }

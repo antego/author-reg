@@ -9,8 +9,10 @@ import java.nio.charset.StandardCharsets;
 @Service
 public class NamedAccountSerializer {
     private ObjectMapper objectMapper = new ObjectMapper();
+
     public byte[] serialize(NamedAccount account) throws JsonProcessingException {
-        String stringifiedAccount = objectMapper.writeValueAsString(account);
+        String stringifiedAccount = objectMapper.writerWithDefaultPrettyPrinter()
+                .writeValueAsString(account);
         return stringifiedAccount.getBytes(StandardCharsets.UTF_8);
     }
 }
