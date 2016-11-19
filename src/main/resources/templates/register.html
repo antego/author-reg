@@ -5,10 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/style/style.css}" />
@@ -17,15 +15,17 @@
 </head>
 <body>
 <div class="container custom-container">
-    <h1>Author Registration</h1>
-    <form action="#" th:action="@{/}" th:object="${copyrightHolder}" method="post">
-        <div>
-            <input class="form-control input-xl" placeholder="Author Name" type="text" th:field="*{name}" />
-        </div>
-        <div>
-            <input type="submit" value="Submit" class="btn btn-default"/>
-        </div>
-    </form>
+    <div style="top: 30%">
+        <h1>Author Registration</h1>
+        <form action="#" th:action="@{/}" th:object="${copyrightHolder}" method="post">
+            <div>
+                <input class="form-control input-xl" placeholder="Author Name" type="text" th:field="*{name}" />
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Submit" class="btn btn-default btn-margin"/>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>

@@ -33,7 +33,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @DirtiesContext
-public class SampleWebFreeMarkerApplicationTests {
+public class TemplateTest {
 
 	@Autowired
 	private TestRestTemplate testRestTemplate;
@@ -43,6 +43,6 @@ public class SampleWebFreeMarkerApplicationTests {
 		ResponseEntity<String> entity = this.testRestTemplate.getForEntity("/",
 				String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-		assertThat(entity.getBody()).contains("Author Name: ");
+		assertThat(entity.getBody()).contains("Author Registration");
 	}
 }
