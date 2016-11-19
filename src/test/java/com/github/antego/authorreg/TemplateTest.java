@@ -40,7 +40,7 @@ public class TemplateTest {
 
 	@Test
 	public void testRegisterTemplate() throws Exception {
-		ResponseEntity<String> entity = this.testRestTemplate.getForEntity("/register.html",
+		ResponseEntity<String> entity = this.testRestTemplate.getForEntity("/",
 				String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
 		assertThat(entity.getBody()).contains("Author Registration");
